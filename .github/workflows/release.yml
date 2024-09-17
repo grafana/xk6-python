@@ -22,6 +22,7 @@ jobs:
         uses: szkiba/xk6bundler@v0
         with:
           with: github.com/grafana/xk6-python=/github/workspace
+          k6_version: v0.52.0
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

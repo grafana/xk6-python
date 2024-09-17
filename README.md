@@ -76,3 +76,7 @@ Check the [documentation](https://grafana.github.io/xk6-python/) for available m
 ## Contribute
 
 If you would like to contribute, start by reading [Contributing Guidelines](https://grafana.github.io/xk6-python/CONTRIBUTING.html).
+
+## k6 version
+
+xk6-python is currently compatible with k6 v0.52.0. It is possible that it works with other versions, but it has not been tested.
