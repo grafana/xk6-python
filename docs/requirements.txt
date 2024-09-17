@@ -1,5 +1,5 @@
 sphinx
-sphinx-autodoc-typehints
-sphinx_rtd_theme
-myst-parser
-typing_extensions
+sphinx-autodoc-typehints==2.2.3
+sphinx_rtd_theme==2.0.0
+myst-parser==4.0.0
+typing_extensions==4.12.2
