@@ -1,0 +1,6 @@
+build
+coverage.txt
+k6
+__pycache__
+env
+_build
