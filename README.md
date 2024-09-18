@@ -54,6 +54,18 @@ Even though [k6 intentionally only supports one programming language](https://k6
 
 The [starlark-go](https://github.com/google/starlark-go) package is a pure go implementation of the [Starlark python dialect](https://github.com/google/starlark-go/blob/master/doc/spec.md). Its use does not require external dependencies, such as the installation of CPython. It doesn't even require the use of [cgo](https://go.dev/wiki/cgo). This enables the portability of the k6 executable binary and simplifies its use in the cloud.
 
+## Is it Python?
+
+Yes and no.
+
+Yes, because starlark is a python dialect. The **language and syntax is python**.
+
+No, because the **usual python ecosystem cannot be used**:
+- no python module system
+- packages that can be installed with pip cannot be used.
+
+This is an embedded python interpreter that does not make the python ecosystem available in the same way as the k6 JavaScript interpreter does not make the Node.js reason system available. So only the python language and syntax can be used plus the built-in modules and the local and remote python/starlark modules.
+
 ## Features
 
 The xk6-python development is in the PoC phase, but it can be used to write real k6 tests. Currently implemented main features:
