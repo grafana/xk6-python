@@ -3,13 +3,13 @@
 package group
 
 import (
+	"errors"
 	"fmt"
 	"time"
 
 	"github.com/grafana/xk6-python/py/builtin/helpers"
 	"github.com/sirupsen/logrus"
 	"go.k6.io/k6/js/modules"
-	"go.k6.io/k6/js/modules/k6"
 	"go.k6.io/k6/lib"
 	"go.k6.io/k6/metrics"
 	"go.starlark.net/starlark"
@@ -32,7 +32,7 @@ func Load(_ string, _ *starlark.Thread, vu modules.VU) (starlark.StringDict, err
 func (mod *module) group(th *starlark.Thread, _ *starlark.Builtin, args starlark.Tuple, _ []starlark.Tuple) (starlark.Value, error) {
 	state := mod.vu.State()
 	if state == nil {
-		return starlark.False, k6.ErrCheckInInitContext
+		return starlark.False, errors.New("Using group() in hte init context is not support")
 	}
 
 	// validate the arguments and get useful objects
