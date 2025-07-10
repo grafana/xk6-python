@@ -7,16 +7,19 @@ jobs:
   build:
     name: Bundle xk6 extensions
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Check out code
         uses: actions/checkout@v4
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Build
         id: build
-        uses: szkiba/xk6bundler@v0
+        uses: szkiba/xk6bundler@fdee404b4c423a222b4d5a301d78719469294faf # v0.1.7
         with:
           with: github.com/grafana/xk6-python=/github/workspace
-          k6_version: v0.52.0
+          k6_version: v1.1.0
