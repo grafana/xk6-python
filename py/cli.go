@@ -78,4 +78,5 @@ func redirectStdin() {
 const jsScript = `
 export * from 'k6/x/python'
 export { default } from 'k6/x/python'
+export function handleSummary(){}
 `
