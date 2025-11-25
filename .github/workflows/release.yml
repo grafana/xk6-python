@@ -1,30 +1,20 @@
-name: release
+name: Release
+
+permissions: {}
+
 on:
   push:
-    tags:
-      - "v*"
+    tags: ["v*.*.*"]
 
 jobs:
   release:
-    name: Bundle xk6 extensions
-    runs-on: ubuntu-latest
+    name: Release
+    uses: grafana/xk6/.github/workflows/extension-release.yml@v1.2.6
     permissions:
       contents: write
-
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Build
-        id: build
-        uses: szkiba/xk6bundler@v0
-        with:
-          with: github.com/grafana/xk6-python=/github/workspace
-          k6_version: v0.52.0
-
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/*.tar.gz
+    with:
+      go-version: "1.24.x"
+      os: '["linux", "windows", "darwin"]'
+      arch: '["amd64", "arm64"]'
+      k6-version: "v1.4.2"
+      xk6-version: "1.2.6"

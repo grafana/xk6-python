@@ -31,7 +31,11 @@ func Load(_ string, _ *starlark.Thread, vu modules.VU) (starlark.StringDict, err
 
 func (mod *module) metric(_ *starlark.Thread, b *starlark.Builtin, args starlark.Tuple, kwargs []starlark.Tuple) (starlark.Value, error) {
 	var str string
-	starlark.UnpackArgs(b.Name(), args, kwargs, "data", &str)
+
+	if err := starlark.UnpackArgs(b.Name(), args, kwargs, "data", &str); err != nil {
+		return nil, err
+	}
+
 	if str == "" {
 		return nil, fmt.Errorf("must provide a metric name, got: %s", args)
 	}
