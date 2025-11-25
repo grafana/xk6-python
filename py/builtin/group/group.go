@@ -32,24 +32,24 @@ func Load(_ string, _ *starlark.Thread, vu modules.VU) (starlark.StringDict, err
 func (mod *module) group(th *starlark.Thread, _ *starlark.Builtin, args starlark.Tuple, _ []starlark.Tuple) (starlark.Value, error) {
 	state := mod.vu.State()
 	if state == nil {
-		return starlark.False, errors.New("Using group() in hte init context is not support")
+		return starlark.False, errors.New("using group() in the init context is not support")
 	}
 
 	// validate the arguments and get useful objects
 	mod.logger.Debugf("Running group, args len=%d", args.Len())
 	if args.Len() != 2 {
-		return nil, fmt.Errorf("Bad arguments len=%d (expected 2)", args.Len())
+		return nil, fmt.Errorf("bad arguments len=%d (expected 2)", args.Len())
 	}
 	_name, _function := args[0], args[1]
 
 	// validate the type of the arguments
 	name, ok := _name.(starlark.String)
 	if !ok {
-		return nil, fmt.Errorf("Error: 'name' argument must be a string")
+		return nil, fmt.Errorf("'name' argument must be a string")
 	}
 	function, ok := _function.(starlark.Callable)
 	if !ok {
-		return nil, fmt.Errorf("Error: 'function' argument must be a callable")
+		return nil, fmt.Errorf("'function' argument must be a callable")
 	}
 
 	oldGroupName, _ := state.Tags.GetCurrentValues().Tags.Get(metrics.TagGroup.String())

@@ -31,20 +31,20 @@ func Load(_ string, _ *starlark.Thread, vu modules.VU) (starlark.StringDict, err
 func (mod *module) check(th *starlark.Thread, _ *starlark.Builtin, args starlark.Tuple, _ []starlark.Tuple) (starlark.Value, error) {
 	state := mod.vu.State()
 	if state == nil {
-		return starlark.False, errors.New("Using group() in hte init context is not support")
+		return starlark.False, errors.New("using group() in hte init context is not support")
 	}
 
 	// validate the arguments and get useful objects
 	mod.logger.Debugf("Running check, args len=%d", args.Len())
 	if args.Len() != 2 {
-		return nil, fmt.Errorf("Bad arguments len=%d (expected 2)", args.Len())
+		return nil, fmt.Errorf("bad arguments len=%d (expected 2)", args.Len())
 	}
 	obj, verifications := args[0], args[1]
 
 	// check verifications is a dict
 	verificationsDict, ok := verifications.(*starlark.Dict)
 	if !ok {
-		return nil, fmt.Errorf("Error: 'verifications' is not a dictionary")
+		return nil, fmt.Errorf("'verifications' is not a dictionary")
 	}
 
 	// prepare the metric tags
@@ -61,11 +61,11 @@ func (mod *module) check(th *starlark.Thread, _ *starlark.Builtin, args starlark
 		key, value := item[0], item[1]
 		keyString, ok := key.(starlark.String)
 		if !ok {
-			return nil, fmt.Errorf("Error: 'verifications' key of item %d is not a string", idx)
+			return nil, fmt.Errorf("'verifications' key of item %d is not a string", idx)
 		}
 		valueFunction, ok := value.(starlark.Callable)
 		if !ok {
-			return nil, fmt.Errorf("Error: 'verifications' value of item %d is not a function", idx)
+			return nil, fmt.Errorf("'verifications' value of item %d is not a function", idx)
 		}
 
 		mod.logger.Debugf("Running function of item %d: %s", idx, keyString)

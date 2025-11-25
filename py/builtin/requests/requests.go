@@ -177,7 +177,7 @@ func (mod *module) newResponse(resp *http.Response) (starlark.Value, error) {
 	dict["headers"] = mod.newHeaders(resp.Header)
 	dict["ok"] = starlark.Bool(resp.StatusCode < http.StatusBadRequest)
 
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
 	// TODO handle Content-Encoding response header
 	body, err := io.ReadAll(resp.Body)
@@ -202,9 +202,9 @@ func (mod *module) newHeaders(header http.Header) *starlark.Dict {
 	dict := starlark.NewDict(len(header))
 
 	for key := range header {
-		dict.SetKey(starlark.String(key), starlark.String(header.Get(key)))
+		_ = dict.SetKey(starlark.String(key), starlark.String(header.Get(key)))
 		// TODO implement custom case insensitive dict?
-		dict.SetKey(starlark.String(strings.ToLower(key)), starlark.String(header.Get(key)))
+		_ = dict.SetKey(starlark.String(strings.ToLower(key)), starlark.String(header.Get(key)))
 	}
 
 	return dict

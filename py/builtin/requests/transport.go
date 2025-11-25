@@ -60,7 +60,7 @@ func (t *tripware) toParsedRequest(req *http.Request) (*httpext.ParsedHTTPReques
 
 		preq.Body = bytes.NewBuffer(data)
 
-		req.Body.Close()
+		_ = req.Body.Close()
 	}
 
 	preq.Req.Header.Set("User-Agent", state.Options.UserAgent.String)
