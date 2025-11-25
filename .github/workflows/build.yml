@@ -22,4 +22,4 @@ jobs:
         uses: szkiba/xk6bundler@fdee404b4c423a222b4d5a301d78719469294faf # v0.1.7
         with:
           with: github.com/grafana/xk6-python=/github/workspace
-          k6_version: v1.1.0
+          k6_version: v1.4.2
