@@ -48,7 +48,7 @@ Check out the [documentation](https://grafana.github.io/xk6-python/).
 
 Python is quite a popular programming language these days. According to the [TIOBE Programming Community Index](https://www.tiobe.com/tiobe-index/) 2024, Python has secured the top position, beating C++, C, Java, and JavaScript.
 
-Even though [k6 intentionally only supports one programming language](https://k6.io/blog/why-k6-does-not-introduce-multiple-scripting-languages/), it is worth considering making an exception for Python.
+Even though [k6 intentionally only supports one programming language](https://web.archive.org/web/20231003073106/https://k6.io/blog/why-k6-does-not-introduce-multiple-scripting-languages/), it is worth considering making an exception for Python.
 
 ## Why Starlark?
 
