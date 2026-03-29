@@ -1,11 +1,11 @@
 module github.com/grafana/xk6-python
 
-go 1.24.0
+go 1.25.0
 
 require (
 	github.com/sirupsen/logrus v1.9.3
 	go.k6.io/k6 v1.4.2
-	go.starlark.net v0.0.0-20251109183026-be02852a5e1f
+	go.starlark.net v0.0.0-20260326113308-fadfc96def35
 )
 
 require (
@@ -24,7 +24,7 @@ require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20250825161204-c5933d9347a5 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250825161204-c5933d9347a5 // indirect
 	google.golang.org/grpc v1.75.0 // indirect
-	google.golang.org/protobuf v1.36.10 // indirect
+	google.golang.org/protobuf v1.36.11 // indirect
 )
 
 require (
@@ -58,7 +58,7 @@ require (
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
-	golang.org/x/sys v0.40.0 // indirect
+	golang.org/x/sys v0.42.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
 	golang.org/x/time v0.14.0 // indirect
 	gopkg.in/guregu/null.v3 v3.3.0 // indirect
